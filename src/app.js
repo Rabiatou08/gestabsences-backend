@@ -3,7 +3,16 @@ const cors    = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://gestabsences-frontend.vercel.app',
+    /\.vercel\.app$/
+  ],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 app.use('/api/auth',             require('./routes/auth'));
@@ -24,5 +33,5 @@ app.use('/api/notifications',    require('./routes/notifications'));
 
 app.get('/', (req, res) => res.json({ message: '🚀 API GestAbsences' }));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`🚀 Serveur sur http://localhost:${PORT}`));
