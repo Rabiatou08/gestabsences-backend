@@ -55,6 +55,8 @@ router.post('/absence', async (req, res) => {
 
 // POST — envoyer email justification
 router.post('/justification', async (req, res) => {
+
+  console.log('Requête justification reçue:', req.body);
   const { id_etudiant, id_enseignement, justification, email_destinataire } = req.body;
 
   if (!email_destinataire)
@@ -91,6 +93,7 @@ router.post('/justification', async (req, res) => {
       html:    template.html,
     });
 
+    console.log('Email justification envoyé à', email_destinataire);
     res.json({ message: 'Email envoyé avec succès' });
   } catch (err) {
     console.error('Erreur email:', err.message);

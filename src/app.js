@@ -7,7 +7,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://gestabsences-frontend.vercel.app',
+    'https://gestabsences-frontend.v Fercel.app',
     /\.vercel\.app$/
   ],
   credentials: true,
